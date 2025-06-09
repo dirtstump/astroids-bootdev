@@ -11,6 +11,11 @@ from constants import (
     ASTEROID_KINDS,
     ASTEROID_SPAWN_RATE,
     ASTEROID_MAX_RADIUS,
+    PLAYER_RADIUS,
+)
+
+from player import (
+    Player,
 )
     
 def main():
@@ -22,12 +27,15 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
 
         screen.fill("black")
+        player.draw(screen)
         pygame.display.flip()
 
         # limit framerate to 60 fps
