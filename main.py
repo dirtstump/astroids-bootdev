@@ -12,22 +12,8 @@ from constants import (
     ASTEROID_SPAWN_RATE,
     ASTEROID_MAX_RADIUS,
 )
-
+    
 def main():
-    
-    pygame.init()
-    SCREENWIDTH = 800
-    SCREENHEIGHT = 800
-    RED = (255, 0, 0)
-    screen = pygame.display.set_mode((SCREENWIDTH, SCREENHEIGHT))
-    
-    while True:
-        pygame.draw.rect(screen, RED, (400, 400, 20, 20), 0)
-        screen.fill(RED)
-        pygame.display.update()
-        print("working")
-    
-def main2():
     print("Starting Asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
@@ -35,6 +21,9 @@ def main2():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
     while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return
         screen.fill("black")
         pygame.display.flip()
 
