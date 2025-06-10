@@ -40,13 +40,20 @@ def main():
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     asteroidfield = AsteroidField()
 
-    while True:
+    loop = True
+    while loop:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
 
         # update gamestate
         updatable.update(dt)
+
+        # detect collisions with player
+        for obj in asteroids:
+            if obj.collision(player):
+                loop = False
+                print("Game over!")
 
         # draw gamestate
         screen.fill("black")
